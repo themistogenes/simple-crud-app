@@ -9,7 +9,7 @@ const createProduct = async (req, res) => {
   } catch (error) {
     res.status(500).json({message: error.message});
   }
-  }
+}
 
 // Get all products
 // GET: /api/products
