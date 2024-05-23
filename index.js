@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.send('Hello from the server!');
 });
 
-// Create Product
+// Create new product
 // POST: /api/products
 app.post('/api/products', async (req, res) => {
 try {
@@ -29,4 +29,27 @@ try {
 } catch (error) {
   res.status(500).json({message: error.message});
 }
+});
+
+// Get all products
+// GET: /api/products
+app.get('/api/products', async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({message: error.message});
+  }
+});
+
+// Get single product
+// GET: /api/products/:id
+app.get('/api/product/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({message: error.message});
+  }
 });
