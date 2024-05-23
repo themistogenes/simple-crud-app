@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const Product = require('./models/product.model.js');
 
 const app = express();
-app.use(express.json()); // allows JSON in a POST request
+app.use(express.json()); // allows JSON data in a POST
+app.use(express.urlencoded({extended: false})) // allows form-encoded data in a POST
 
 mongoose.connect('mongodb+srv://jalimaras:secret1819@cluster0.jyhl7j0.mongodb.net/simple-crud-app-db?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => {
