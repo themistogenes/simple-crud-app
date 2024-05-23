@@ -20,6 +20,8 @@ app.get('/', (req, res) => {
   res.send('Hello from the server!');
 });
 
+// Create Product
+// POST: /api/products
 app.post('/api/products', async (req, res) => {
 try {
   const product = await Product.create(req.body);
